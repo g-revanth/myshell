@@ -104,26 +104,24 @@ int builtincommandcheck(char* builtinstr[1001],int tokensize) {
                     return 1;
             }
 
-          else { 
+            else { 
                 pid_t cont = jobspid[index-1];  
 
-                 kill(cont,SIGCONT);
+                kill(cont,SIGCONT);
                    
-            if(index>0){
-            for(int t=index;t<listposition;t++){
-                strcpy(jobspid[t-1],jobspid[t]);
-                strcpy(jobslist[t-1],jobslist[t]);
-            }
+                if(index>0){
+                for(int t=index;t<listposition;t++){
+                    strcpy(jobspid[t-1],jobspid[t]);
+                    strcpy(jobslist[t-1],jobslist[t]);
+                }
 
-            listposition = listposition-1;
-            }
-            else {
-                            listposition=0;
-
-            }
-
+                listposition = listposition-1;
+                }
+                else {
+                        listposition=0;
+                }
                 return 1;
-                        }
+            }
         }
 
     return 0;
